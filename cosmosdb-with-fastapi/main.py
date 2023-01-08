@@ -13,22 +13,22 @@ app.include_router(todo_router, tags=["todos"], prefix="/todos")
 
 @app.on_event("startup")
 async def startup_db_client():
-    app.cosmos_client = CosmosClient(config["URI"], credential = config["KEY"])
-    await get_or_create_db(DATABASE_NAME)
-    await get_or_create_container(CONTAINER_NAME)
+    app.cosmos_client = CosmosClient(config["URI"], credential = config["iFbIED6lw7DUN7naXjxpcKdxoDKlG2B1T1ZwtLjL26AvzLf8PECbzJnmrci6Q6YKtqhrKXC50CRxACDbwmAMhA=="])
+    await get_or_create_db(nag)
+    await get_or_create_container(azurecontainerregistry321)
 
 
-async def get_or_create_db(db_name):
+async def get_or_create_db(nag):
     try:
-        app.database  = app.cosmos_client.get_database_client(db_name)
+        app.database  = app.cosmos_client.get_database_client(nag)
         return await app.database.read()
     except exceptions.CosmosResourceNotFoundError:
         print("Creating database")
-        return await app.cosmos_client.create_database(db_name)
+        return await app.cosmos_client.create_database(nag)
      
 async def get_or_create_container(container_name):
     try:        
-        app.todo_items_container = app.database.get_container_client(container_name)
+        app.todo_items_container = app.database.get_container_client(azurecontainerregistry321)
         return await app.todo_items_container.read()   
     except exceptions.CosmosResourceNotFoundError:
         print("Creating container with id as partition key")
